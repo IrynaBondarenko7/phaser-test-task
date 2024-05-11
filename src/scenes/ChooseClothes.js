@@ -1,40 +1,50 @@
+// ChooseClothes;
+
 import { Scene } from "phaser";
 
-export class ChooseHair extends Scene {
+export class ChooseClothes extends Scene {
   constructor() {
-    super("ChooseHair");
+    super("ChooseClothes");
   }
 
   preload() {
     this.load.image(
-      "hair-back2",
-      "/assets/MAINHERO/start/hair/back/hair_back2.png"
-    );
-    this.load.image(
-      "hair-front2",
-      "/assets/MAINHERO/start/hair/front/hair-front2.png"
+      "clothes-grey",
+      "/assets/MAINHERO/start/clothes/cloths_grey.png"
     );
   }
 
   create() {
     let characterDataString = localStorage.getItem("characterData");
+    let characterHairString = localStorage.getItem("characterHair");
 
     let characterData = JSON.parse(characterDataString);
+    let characterHair = JSON.parse(characterHairString);
 
     this.index = 0;
     this.allBodies = ["body-1", "body-2"];
     this.allFrontHairs = ["hair-front1", "hair-front2"];
     this.allBackHairs = ["hair-back1", "hair-back2"];
+    this.allClothes = ["clothes-orange", "clothes-grey"];
 
     this.allFaces = ["face-1-default", "face-2-default"];
 
     this.add.image(512, 384, "background-bedroom");
 
     //Second Layer
-    this.hairBack = this.add
-      .image(512, 434, this.allBackHairs[this.index])
-      .setScale(0.5)
-      .setInteractive();
+
+    if (characterHair.hair === 1) {
+      this.hairBack = this.add
+        .image(512, 434, this.allBackHairs[0])
+        .setScale(0.5)
+        .setInteractive();
+    }
+    if (characterHair.hair === 2) {
+      this.hairBack = this.add
+        .image(512, 434, this.allBackHairs[1])
+        .setScale(0.5)
+        .setInteractive();
+    }
 
     //Third Layer:
     if (characterData.body === 1) {
@@ -51,7 +61,11 @@ export class ChooseHair extends Scene {
     }
 
     // Fourth Layer
-    this.add.image(512, 434, "clothes-orange").setScale(0.5);
+    this.cloths = this.add
+      .image(512, 434, this.allClothes[this.index])
+      .setScale(0.5)
+      .setInteractive();
+
     //Fifth Layer
     if (characterData.body === 1) {
       this.face = this.add
@@ -67,10 +81,18 @@ export class ChooseHair extends Scene {
     }
     //Sixth Layer
 
-    this.hairFront = this.add
-      .image(512, 434, this.allFrontHairs[this.index])
-      .setScale(0.5)
-      .setInteractive();
+    if (characterHair.hair === 1) {
+      this.hairFront = this.add
+        .image(512, 434, this.allFrontHairs[0])
+        .setScale(0.5)
+        .setInteractive();
+    }
+    if (characterHair.hair === 2) {
+      this.hairFront = this.add
+        .image(512, 434, this.allFrontHairs[1])
+        .setScale(0.5)
+        .setInteractive();
+    }
 
     //points
     this.allPoints = [];
@@ -78,7 +100,7 @@ export class ChooseHair extends Scene {
     let startX = 512;
     const distance = 20;
 
-    this.allFrontHairs.forEach((hair, index) => {
+    this.allClothes.forEach((cloths, index) => {
       const x = startX + index * distance;
       const y = 564;
       this.allPoints.push(this.add.image(x, y, "point"));
@@ -88,11 +110,11 @@ export class ChooseHair extends Scene {
     let forwardButton = this.add.image(700, 500, "btn-right").setInteractive();
 
     backButton.on("pointerdown", () => {
-      this.previousHair();
+      this.previousCloths();
     });
 
     forwardButton.on("pointerdown", () => {
-      this.nextHair();
+      this.nextCloths();
     });
 
     //Form container
@@ -100,7 +122,7 @@ export class ChooseHair extends Scene {
 
     let form = this.add.image(0, 0, "form");
 
-    let text = this.add.text(-80, -10, "Choose your hair", {
+    let text = this.add.text(-80, -10, "Choose your clothes", {
       fontFamily: "Nunito Sans",
       fontWeight: 700,
       fontSize: 20,
@@ -157,16 +179,16 @@ export class ChooseHair extends Scene {
     this.confirmContainer.setInteractive();
 
     this.confirmContainer.on("pointerdown", () => {
-      this.scene.start("ChooseClothes");
+      this.scene.start("Dialogue");
       let character;
 
       if (this.index === 0) {
-        character = { hair: 1 };
-        localStorage.setItem("characterHair", JSON.stringify(character));
+        character = { cloths: 1 };
+        localStorage.setItem("characterCloths", JSON.stringify(character));
       }
       if (this.index === 1) {
-        character = { hair: 2 };
-        localStorage.setItem("characterHair", JSON.stringify(character));
+        character = { cloths: 2 };
+        localStorage.setItem("characterCloths", JSON.stringify(character));
       }
     });
   }
@@ -177,12 +199,12 @@ export class ChooseHair extends Scene {
     );
   }
 
-  nextHair() {
-    this.index =
-      this.index >= this.allBackHairs.length - 1 ? 0 : this.index + 1;
+  nextCloths() {
+    this.index = this.index >= this.allClothes.length - 1 ? 0 : this.index + 1;
 
-    this.hairBack.setTexture(this.allBackHairs[this.index]);
-    this.hairFront.setTexture(this.allFrontHairs[this.index]);
+    // this.hairBack.setTexture(this.allBackHairs[this.index]);
+    // this.hairFront.setTexture(this.allFrontHairs[this.index]);
+    this.cloths.setTexture(this.allClothes[this.index]);
 
     this.allPoints.forEach((point, index) => {
       if (index === this.index) {
@@ -197,11 +219,13 @@ export class ChooseHair extends Scene {
     this.updateNumberOfChoiceText();
   }
 
-  previousHair() {
+  previousCloths() {
     this.index = this.index <= 0 ? 1 : this.index - 1;
 
-    this.hairBack.setTexture(this.allBackHairs[this.index]);
-    this.hairFront.setTexture(this.allFrontHairs[this.index]);
+    // this.hairBack.setTexture(this.allBackHairs[this.index]);
+    // this.hairFront.setTexture(this.allFrontHairs[this.index]);
+
+    this.cloths.setTexture(this.allClothes[this.index]);
 
     this.allPoints.forEach((point, index) => {
       if (index === this.index) {
