@@ -98,10 +98,10 @@ export class ChooseBody extends Scene {
 
     let form = this.add.image(0, 0, "form");
 
-    let text = this.add.text(-80, -10, "Choose your body", {
+    let text = this.add.text(-80, -15, "Choose your body", {
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: 20,
+      fontSize: 25,
       color: "#141A3D",
       align: "center",
       padding: {
@@ -135,10 +135,10 @@ export class ChooseBody extends Scene {
 
     this.confirmContainer = this.add.container(512, 720);
 
-    let confirmText = this.add.text(-30, -20, "Confirm", {
+    let confirmText = this.add.text(-30, -25, "Confirm", {
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: 15,
+      fontSize: 20,
       color: "#fff",
       align: "center",
       padding: {

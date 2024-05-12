@@ -13,7 +13,7 @@ export class StartGame extends Scene {
     this.add
       .text(512, 460, "Start Game", {
         fontFamily: "Arial Black",
-        fontSize: 40,
+        fontSize: 80,
         color: "#ffffff",
         stroke: "#000000",
         strokeThickness: 8,

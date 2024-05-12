@@ -100,10 +100,10 @@ export class ChooseHair extends Scene {
 
     let form = this.add.image(0, 0, "form");
 
-    let text = this.add.text(-80, -10, "Choose your hair", {
+    let text = this.add.text(-80, -15, "Choose your hair", {
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: 20,
+      fontSize: 25,
       color: "#141A3D",
       align: "center",
       padding: {
@@ -137,10 +137,10 @@ export class ChooseHair extends Scene {
 
     this.confirmContainer = this.add.container(512, 720);
 
-    let confirmText = this.add.text(-30, -20, "Confirm", {
+    let confirmText = this.add.text(-30, -25, "Confirm", {
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: 15,
+      fontSize: 20,
       color: "#fff",
       align: "center",
       padding: {
@@ -158,15 +158,22 @@ export class ChooseHair extends Scene {
 
     this.confirmContainer.on("pointerdown", () => {
       this.scene.start("ChooseClothes");
+
       let character;
 
       if (this.index === 0) {
-        character = { hair: 1 };
-        localStorage.setItem("characterHair", JSON.stringify(character));
+        character = {
+          ...characterData,
+          hair: 1,
+        };
+        localStorage.setItem("characterData", JSON.stringify(character));
       }
       if (this.index === 1) {
-        character = { hair: 2 };
-        localStorage.setItem("characterHair", JSON.stringify(character));
+        character = {
+          ...characterData,
+          hair: 2,
+        };
+        localStorage.setItem("characterData", JSON.stringify(character));
       }
     });
   }

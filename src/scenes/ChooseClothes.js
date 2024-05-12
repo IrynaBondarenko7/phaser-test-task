@@ -16,10 +16,8 @@ export class ChooseClothes extends Scene {
 
   create() {
     let characterDataString = localStorage.getItem("characterData");
-    let characterHairString = localStorage.getItem("characterHair");
 
     let characterData = JSON.parse(characterDataString);
-    let characterHair = JSON.parse(characterHairString);
 
     this.index = 0;
     this.allBodies = ["body-1", "body-2"];
@@ -33,13 +31,13 @@ export class ChooseClothes extends Scene {
 
     //Second Layer
 
-    if (characterHair.hair === 1) {
+    if (characterData.hair === 1) {
       this.hairBack = this.add
         .image(512, 434, this.allBackHairs[0])
         .setScale(0.5)
         .setInteractive();
     }
-    if (characterHair.hair === 2) {
+    if (characterData.hair === 2) {
       this.hairBack = this.add
         .image(512, 434, this.allBackHairs[1])
         .setScale(0.5)
@@ -81,13 +79,13 @@ export class ChooseClothes extends Scene {
     }
     //Sixth Layer
 
-    if (characterHair.hair === 1) {
+    if (characterData.hair === 1) {
       this.hairFront = this.add
         .image(512, 434, this.allFrontHairs[0])
         .setScale(0.5)
         .setInteractive();
     }
-    if (characterHair.hair === 2) {
+    if (characterData.hair === 2) {
       this.hairFront = this.add
         .image(512, 434, this.allFrontHairs[1])
         .setScale(0.5)
@@ -122,10 +120,10 @@ export class ChooseClothes extends Scene {
 
     let form = this.add.image(0, 0, "form");
 
-    let text = this.add.text(-80, -10, "Choose your clothes", {
+    let text = this.add.text(-110, -15, "Choose your clothes", {
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: 20,
+      fontSize: 25,
       color: "#141A3D",
       align: "center",
       padding: {
@@ -159,10 +157,10 @@ export class ChooseClothes extends Scene {
 
     this.confirmContainer = this.add.container(512, 720);
 
-    let confirmText = this.add.text(-30, -20, "Confirm", {
+    let confirmText = this.add.text(-70, -25, "Confirm and start", {
       fontFamily: "Nunito Sans",
       fontWeight: 700,
-      fontSize: 15,
+      fontSize: 20,
       color: "#fff",
       align: "center",
       padding: {
@@ -183,12 +181,18 @@ export class ChooseClothes extends Scene {
       let character;
 
       if (this.index === 0) {
-        character = { cloths: 1 };
-        localStorage.setItem("characterCloths", JSON.stringify(character));
+        character = {
+          ...characterData,
+          cloths: 1,
+        };
+        localStorage.setItem("characterData", JSON.stringify(character));
       }
       if (this.index === 1) {
-        character = { cloths: 2 };
-        localStorage.setItem("characterCloths", JSON.stringify(character));
+        character = {
+          ...characterData,
+          cloths: 2,
+        };
+        localStorage.setItem("characterData", JSON.stringify(character));
       }
     });
   }
@@ -202,8 +206,6 @@ export class ChooseClothes extends Scene {
   nextCloths() {
     this.index = this.index >= this.allClothes.length - 1 ? 0 : this.index + 1;
 
-    // this.hairBack.setTexture(this.allBackHairs[this.index]);
-    // this.hairFront.setTexture(this.allFrontHairs[this.index]);
     this.cloths.setTexture(this.allClothes[this.index]);
 
     this.allPoints.forEach((point, index) => {
@@ -221,9 +223,6 @@ export class ChooseClothes extends Scene {
 
   previousCloths() {
     this.index = this.index <= 0 ? 1 : this.index - 1;
-
-    // this.hairBack.setTexture(this.allBackHairs[this.index]);
-    // this.hairFront.setTexture(this.allFrontHairs[this.index]);
 
     this.cloths.setTexture(this.allClothes[this.index]);
 
