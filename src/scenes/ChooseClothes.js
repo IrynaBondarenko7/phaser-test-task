@@ -12,6 +12,11 @@ export class ChooseClothes extends Scene {
       "clothes-grey",
       "/assets/MAINHERO/start/clothes/cloths_grey.png"
     );
+
+    this.load.image(
+      "clothes-pink",
+      "/assets/MAINHERO/start/clothes/cloths_pink.png"
+    );
   }
 
   create() {
@@ -23,7 +28,7 @@ export class ChooseClothes extends Scene {
     this.allBodies = ["body-1", "body-2"];
     this.allFrontHairs = ["hair-front1", "hair-front2"];
     this.allBackHairs = ["hair-back1", "hair-back2"];
-    this.allClothes = ["clothes-orange", "clothes-grey"];
+    this.allClothes = ["clothes-orange", "clothes-grey", "clothes-pink"];
 
     this.allFaces = ["face-1-default", "face-2-default"];
 
@@ -193,6 +198,13 @@ export class ChooseClothes extends Scene {
         character = {
           ...characterData,
           cloths: 2,
+        };
+        localStorage.setItem("characterData", JSON.stringify(character));
+      }
+      if (this.index === 2) {
+        character = {
+          ...characterData,
+          cloths: 3,
         };
         localStorage.setItem("characterData", JSON.stringify(character));
       }

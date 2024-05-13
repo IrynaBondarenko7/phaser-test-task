@@ -11,7 +11,6 @@ export class Dialogue extends Scene {
     this.load.image("eclipse-sad", "/assets/eclipces/Sad.png");
     this.load.image("eclipse-angry", "/assets/eclipces/Angry.png");
     this.load.image("eclipse-shy", "/assets/eclipces/Shy.png");
-    this.load.image("speech-left", "/assets/speech-left.png");
     this.load.image("thought-left", "/assets/thought-left.png");
     this.load.image("home", "/assets/home.png");
     this.load.image("middle-dialogue", "/assets/middle-dialogue.png");
@@ -48,7 +47,7 @@ export class Dialogue extends Scene {
     this.allBodies = ["body-1", "body-2"];
     this.allFrontHairs = ["hair-front1", "hair-front2"];
     this.allBackHairs = ["hair-back1", "hair-back2"];
-    this.allClothes = ["clothes-orange", "clothes-grey"];
+    this.allClothes = ["clothes-orange", "clothes-grey", "clothes-pink"];
 
     this.allFaces = ["face-1-default", "face-2-default"];
     this.allSadFaces = ["face-1-sad", "face-2-sad"];
@@ -56,7 +55,7 @@ export class Dialogue extends Scene {
     this.allShyFaces = ["face-1-shy", "face-2-shy"];
 
     this.add.image(512, 384, "background-bedroom").setScale(0.5);
-    this.home = this.add.image(50, 50, "home").setInteractive();
+    this.home = this.add.image(50, 50, "home").setInteractive().setScale(1.4);
 
     this.middleDialogue = this.add
       .image(512, 434, "middle-dialogue")
@@ -233,6 +232,23 @@ export class Dialogue extends Scene {
     if (characterData.cloths === 2) {
       this.cloths = this.add
         .image(512, 534, this.allClothes[1])
+        .setScale(0.5)
+        .setInteractive()
+        .setDepth(4);
+
+      let mask = this.make
+        .graphics()
+        .fillEllipse(
+          512,
+          344,
+          this.cloths.width * 0.4,
+          this.cloths.height * 0.25
+        );
+      this.cloths.setMask(mask.createGeometryMask());
+    }
+    if (characterData.cloths === 3) {
+      this.cloths = this.add
+        .image(512, 534, this.allClothes[2])
         .setScale(0.5)
         .setInteractive()
         .setDepth(4);
@@ -552,362 +568,362 @@ export class Dialogue extends Scene {
 
     let tweens = this.tweens.chain({
       tweens: [
-        // {
-        //   targets: this.text1,
-        //   duration: 1000,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.textContainer1,
-        //   x: 100,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.text1,
-        //   duration: 1000,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: container,
-        //   duration: 500,
-        //   alpha: 1,
-        //   delay: 1000,
-        // },
-        // {
-        //   targets: this.thoughtLeft,
-        //   duration: 500,
-        //   alpha: 1,
-        //   delay: 100,
-        // },
-        // {
-        //   targets: this.heroName,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText1,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText1,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.heroText2,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.eclipseSad,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.sadFace,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText2,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.sadFace,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: this.eclipseSad,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: this.heroText3,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.eclipseAngry,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.angryFace,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.eclipseAngry,
-        //   duration: 500,
-        //   alpha: 0,
-        //   delay: 1000,
-        // },
-        // {
-        //   targets: this.heroText3,
-        //   duration: 1000,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: this.angryFace,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: this.heroName,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: container,
-        //   duration: 100,
-        //   alpha: 0,
-        // },
+        {
+          targets: this.text1,
+          duration: 1000,
+          alpha: 1,
+        },
+        {
+          targets: this.textContainer1,
+          x: 100,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.text1,
+          duration: 1000,
+          alpha: 0,
+        },
+        {
+          targets: container,
+          duration: 500,
+          alpha: 1,
+          delay: 1000,
+        },
+        {
+          targets: this.thoughtLeft,
+          duration: 500,
+          alpha: 1,
+          delay: 100,
+        },
+        {
+          targets: this.heroName,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText1,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText1,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.heroText2,
+          duration: 1000,
+          alpha: 1,
+          delay: 2000,
+        },
+        {
+          targets: this.eclipseSad,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.sadFace,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText2,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.sadFace,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.eclipseSad,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.heroText3,
+          duration: 1000,
+          alpha: 1,
+          delay: 2000,
+        },
+        {
+          targets: this.eclipseAngry,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.angryFace,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.eclipseAngry,
+          duration: 500,
+          alpha: 0,
+          delay: 1000,
+        },
+        {
+          targets: this.heroText3,
+          duration: 1000,
+          alpha: 0,
+        },
+        {
+          targets: this.angryFace,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.heroName,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: container,
+          duration: 100,
+          alpha: 0,
+        },
         ////////////////////////////////////////////////////
-        // {
-        //   targets: this.textContainer1,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 1000,
-        // },
-        // {
-        //   targets: this.text2,
-        //   duration: 1000,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.textContainer1,
-        //   x: 100,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.text2,
-        //   duration: 1000,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: container,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 500,
-        // },
-        // {
-        //   targets: this.thoughtLeft,
-        //   duration: 500,
-        //   alpha: 1,
-        //   delay: 100,
-        // },
-        // {
-        //   targets: this.heroName,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText4,
-        //   duration: 1000,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText4,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.heroText5,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.heroText5,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.heroText6,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.eclipseSad,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.sadFace,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText6,
-        //   duration: 500,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.eclipseSad,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: this.sadFace,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: this.heroText7,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.heroText7,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.heroName,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: container,
-        //   duration: 300,
-        //   alpha: 0,
-        // },
+        {
+          targets: this.textContainer1,
+          duration: 1000,
+          alpha: 1,
+          delay: 1000,
+        },
+        {
+          targets: this.text2,
+          duration: 1000,
+          alpha: 1,
+        },
+        {
+          targets: this.textContainer1,
+          x: 100,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.text2,
+          duration: 1000,
+          alpha: 0,
+        },
+        {
+          targets: container,
+          duration: 1000,
+          alpha: 1,
+          delay: 500,
+        },
+        {
+          targets: this.thoughtLeft,
+          duration: 500,
+          alpha: 1,
+          delay: 100,
+        },
+        {
+          targets: this.heroName,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText4,
+          duration: 1000,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText4,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.heroText5,
+          duration: 1000,
+          alpha: 1,
+          delay: 2000,
+        },
+        {
+          targets: this.heroText5,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.heroText6,
+          duration: 1000,
+          alpha: 1,
+          delay: 2000,
+        },
+        {
+          targets: this.eclipseSad,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.sadFace,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText6,
+          duration: 500,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.eclipseSad,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.sadFace,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.heroText7,
+          duration: 1000,
+          alpha: 1,
+          delay: 2000,
+        },
+        {
+          targets: this.heroText7,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.heroName,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: container,
+          duration: 300,
+          alpha: 0,
+        },
         ///////////////////////////////
-        // {
-        //   targets: this.textContainer1,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 1000,
-        // },
-        // {
-        //   targets: this.text3,
-        //   duration: 1000,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.textContainer1,
-        //   x: 100,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.text3,
-        //   duration: 1000,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: container,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 500,
-        // },
-        // {
-        //   targets: this.thoughtLeft,
-        //   duration: 500,
-        //   alpha: 1,
-        //   delay: 100,
-        // },
-        // {
-        //   targets: this.heroName,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText8,
-        //   duration: 1000,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText8,
-        //   duration: 500,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.heroName,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: container,
-        //   duration: 300,
-        //   alpha: 0,
-        // },
+        {
+          targets: this.textContainer1,
+          duration: 1000,
+          alpha: 1,
+          delay: 1000,
+        },
+        {
+          targets: this.text3,
+          duration: 1000,
+          alpha: 1,
+        },
+        {
+          targets: this.textContainer1,
+          x: 100,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.text3,
+          duration: 1000,
+          alpha: 0,
+        },
+        {
+          targets: container,
+          duration: 1000,
+          alpha: 1,
+          delay: 500,
+        },
+        {
+          targets: this.thoughtLeft,
+          duration: 500,
+          alpha: 1,
+          delay: 100,
+        },
+        {
+          targets: this.heroName,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText8,
+          duration: 1000,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText8,
+          duration: 500,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.heroName,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: container,
+          duration: 300,
+          alpha: 0,
+        },
 
-        // {
-        //   targets: this.thoughtLeft,
-        //   duration: 500,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: this.textContainer1,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 1000,
-        // },
-        // {
-        //   targets: this.text4,
-        //   duration: 1000,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.textContainer1,
-        //   x: 100,
-        //   duration: 1000,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
-        // {
-        //   targets: this.text4,
-        //   duration: 1000,
-        //   alpha: 0,
-        // },
-        // {
-        //   targets: container,
-        //   duration: 1000,
-        //   alpha: 1,
-        //   delay: 500,
-        // },
-        // {
-        //   targets: this.thoughtLeft,
-        //   duration: 500,
-        //   alpha: 1,
-        //   delay: 100,
-        // },
-        // {
-        //   targets: this.heroName,
-        //   duration: 500,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText9,
-        //   duration: 1000,
-        //   alpha: 1,
-        // },
-        // {
-        //   targets: this.heroText9,
-        //   duration: 500,
-        //   alpha: 0,
-        //   delay: 2000,
-        // },
+        {
+          targets: this.thoughtLeft,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.textContainer1,
+          duration: 1000,
+          alpha: 1,
+          delay: 1000,
+        },
+        {
+          targets: this.text4,
+          duration: 1000,
+          alpha: 1,
+        },
+        {
+          targets: this.textContainer1,
+          x: 100,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.text4,
+          duration: 1000,
+          alpha: 0,
+        },
+        {
+          targets: container,
+          duration: 1000,
+          alpha: 1,
+          delay: 500,
+        },
+        {
+          targets: this.thoughtLeft,
+          duration: 500,
+          alpha: 1,
+          delay: 100,
+        },
+        {
+          targets: this.heroName,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText9,
+          duration: 1000,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText9,
+          duration: 500,
+          alpha: 0,
+          delay: 2000,
+        },
         {
           targets: this.heroText10,
           duration: 500,
