@@ -51,7 +51,7 @@ export class ChooseBody extends Scene {
     this.allBodies = ["body-1", "body-2"];
     this.allFaces = ["face-1-default", "face-2-default"];
 
-    this.add.image(512, 384, "background-bedroom");
+    this.add.image(512, 384, "background-bedroom").setScale(0.5);
 
     //Second Layer
     this.add.image(512, 434, "hair-back1").setScale(0.5);

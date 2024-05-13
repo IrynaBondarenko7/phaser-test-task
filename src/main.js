@@ -5,6 +5,7 @@ import { StartGame } from "./scenes/StartGame";
 import { Preloader } from "./scenes/Preloader";
 import { ChooseClothes } from "./scenes/ChooseClothes";
 import { Dialogue } from "./scenes/Dialogue";
+import { NextDialogue } from "./scenes/NextDialogue";
 
 //  Find out more information about the Game Config at:
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
@@ -26,6 +27,7 @@ const config = {
     ChooseHair,
     ChooseClothes,
     Dialogue,
+    NextDialogue,
   ],
 };
 

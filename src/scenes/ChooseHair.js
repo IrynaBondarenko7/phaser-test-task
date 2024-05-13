@@ -28,7 +28,7 @@ export class ChooseHair extends Scene {
 
     this.allFaces = ["face-1-default", "face-2-default"];
 
-    this.add.image(512, 384, "background-bedroom");
+    this.add.image(512, 384, "background-bedroom").setScale(0.5);
 
     //Second Layer
     this.hairBack = this.add
@@ -182,7 +182,7 @@ export class ChooseHair extends Scene {
     this.tweens.add({
       targets: text,
       duration: 1000,
-      delay: 500,
+      delay: 400,
       alpha: 1,
     });
   }

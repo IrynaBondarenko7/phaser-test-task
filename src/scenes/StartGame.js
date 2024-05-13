@@ -10,7 +10,7 @@ export class StartGame extends Scene {
   }
 
   create() {
-    this.add.image(512, 384, "background-bedroom");
+    this.add.image(512, 384, "background-bedroom").setScale(0.5);
 
     this.add
       .text(512, 460, "Click to start the game", {
@@ -39,9 +39,9 @@ export class StartGame extends Scene {
       },
     });
 
-    // const width = 100;
-    // const height = 100;
-    // this.confirmContainer.setSize(width, height);
+    const width = 100;
+    const height = 100;
+    this.confirmContainer.setSize(width, height);
 
     this.confirmContainer.add([confirmBtn, confirmText]);
     this.confirmContainer.setInteractive();
