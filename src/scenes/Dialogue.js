@@ -253,11 +253,11 @@ export class Dialogue extends Scene {
         .setDepth(7);
     }
 
-    this.speechLeft = this.add.image(525, 567, "speech-left").setDepth(1);
-    this.speechLeft.setAlpha(0);
+    this.thoughtLeft = this.add.image(525, 567, "thought-left").setDepth(1);
+    this.thoughtLeft.setAlpha(0);
 
     this.heroName = this.add
-      .text(540, 498, "SAMPLE", {
+      .text(540, 510, "SAMPLE", {
         fontFamily: "Passion One",
         fontWeight: 700,
         fontSize: 20,
@@ -274,7 +274,7 @@ export class Dialogue extends Scene {
     this.heroName.setAlpha(0);
 
     this.heroText1 = this.add
-      .text(400, 520, `${data[2].text}`, {
+      .text(400, 530, `${data[2].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -291,7 +291,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText2 = this.add
-      .text(400, 520, `${data[3].text}`, {
+      .text(400, 530, `${data[3].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -308,7 +308,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText3 = this.add
-      .text(400, 520, `${data[4].text}`, {
+      .text(400, 530, `${data[4].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -325,7 +325,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText4 = this.add
-      .text(400, 520, `${data[6].text}`, {
+      .text(400, 530, `${data[6].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -342,7 +342,41 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText5 = this.add
-      .text(400, 520, `${data[7].text}`, {
+      .text(400, 530, `${data[7].text}`, {
+        fontFamily: "Nunito Sans",
+        fontWeight: 700,
+        fontSize: 20,
+        color: "#141A3D",
+        align: "left",
+        letterSpacing: "0.4px",
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+        wordWrap: { width: 276 },
+        wordWrapWidth: 276,
+      })
+      .setDepth(2);
+
+    this.heroText6 = this.add
+      .text(400, 530, `${data[8].text}`, {
+        fontFamily: "Nunito Sans",
+        fontWeight: 700,
+        fontSize: 20,
+        color: "#141A3D",
+        align: "left",
+        letterSpacing: "0.4px",
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+        wordWrap: { width: 276 },
+        wordWrapWidth: 276,
+      })
+      .setDepth(2);
+
+    this.heroText7 = this.add
+      .text(400, 530, `${data[9].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -363,6 +397,8 @@ export class Dialogue extends Scene {
     this.heroText3.setAlpha(0);
     this.heroText4.setAlpha(0);
     this.heroText5.setAlpha(0);
+    this.heroText6.setAlpha(0);
+    this.heroText7.setAlpha(0);
 
     let container = this.add.container(0, 0);
 
@@ -377,7 +413,7 @@ export class Dialogue extends Scene {
       this.sadFace,
       this.angryFace,
       this.hairFront,
-      this.speechLeft,
+      this.thoughtLeft,
     ]);
 
     container.setAlpha(0);
@@ -388,125 +424,126 @@ export class Dialogue extends Scene {
 
     this.tweens.chain({
       tweens: [
-        {
-          targets: this.text1,
-          duration: 1000,
-          alpha: 1,
-        },
-        {
-          targets: this.textContainer1,
-          x: 100,
-          duration: 1000,
-          alpha: 0,
-          delay: 2000,
-        },
-        {
-          targets: this.text1,
-          duration: 1000,
-          alpha: 0,
-        },
-        {
-          targets: container,
-          duration: 500,
-          alpha: 1,
-          delay: 1000,
-        },
-        {
-          targets: this.speechLeft,
-          duration: 500,
-          alpha: 1,
-          delay: 100,
-        },
-        {
-          targets: this.heroName,
-          duration: 500,
-          alpha: 1,
-        },
-        {
-          targets: this.heroText1,
-          duration: 500,
-          alpha: 1,
-        },
-        {
-          targets: this.heroText1,
-          duration: 1000,
-          alpha: 0,
-          delay: 2000,
-        },
-        {
-          targets: this.heroText2,
-          duration: 1000,
-          alpha: 1,
-          delay: 2000,
-        },
-        {
-          targets: this.eclipseSad,
-          duration: 500,
-          alpha: 1,
-        },
-        {
-          targets: this.sadFace,
-          duration: 500,
-          alpha: 1,
-        },
-        {
-          targets: this.heroText2,
-          duration: 1000,
-          alpha: 0,
-          delay: 2000,
-        },
-        {
-          targets: this.sadFace,
-          duration: 500,
-          alpha: 0,
-        },
-        {
-          targets: this.eclipseSad,
-          duration: 500,
-          alpha: 0,
-        },
-        {
-          targets: this.heroText3,
-          duration: 1000,
-          alpha: 1,
-          delay: 2000,
-        },
-        {
-          targets: this.eclipseAngry,
-          duration: 500,
-          alpha: 1,
-        },
-        {
-          targets: this.angryFace,
-          duration: 500,
-          alpha: 1,
-        },
-        {
-          targets: this.eclipseAngry,
-          duration: 500,
-          alpha: 0,
-          delay: 1000,
-        },
-        {
-          targets: this.heroText3,
-          duration: 1000,
-          alpha: 0,
-        },
-        {
-          targets: this.angryFace,
-          duration: 500,
-          alpha: 0,
-        },
-        {
-          targets: this.heroName,
-          duration: 500,
-          alpha: 0,
-        },
-        {
-          targets: container,
-          duration: 100,
-          alpha: 0,
-        },
+        // {
+        //   targets: this.text1,
+        //   duration: 1000,
+        //   alpha: 1,
+        // },
+        // {
+        //   targets: this.textContainer1,
+        //   x: 100,
+        //   duration: 1000,
+        //   alpha: 0,
+        //   delay: 2000,
+        // },
+        // {
+        //   targets: this.text1,
+        //   duration: 1000,
+        //   alpha: 0,
+        // },
+        // {
+        //   targets: container,
+        //   duration: 500,
+        //   alpha: 1,
+        //   delay: 1000,
+        // },
+        // {
+        //   targets: this.thoughtLeft,
+        //   duration: 500,
+        //   alpha: 1,
+        //   delay: 100,
+        // },
+        // {
+        //   targets: this.heroName,
+        //   duration: 500,
+        //   alpha: 1,
+        // },
+        // {
+        //   targets: this.heroText1,
+        //   duration: 500,
+        //   alpha: 1,
+        // },
+        // {
+        //   targets: this.heroText1,
+        //   duration: 1000,
+        //   alpha: 0,
+        //   delay: 2000,
+        // },
+        // {
+        //   targets: this.heroText2,
+        //   duration: 1000,
+        //   alpha: 1,
+        //   delay: 2000,
+        // },
+        // {
+        //   targets: this.eclipseSad,
+        //   duration: 500,
+        //   alpha: 1,
+        // },
+        // {
+        //   targets: this.sadFace,
+        //   duration: 500,
+        //   alpha: 1,
+        // },
+        // {
+        //   targets: this.heroText2,
+        //   duration: 1000,
+        //   alpha: 0,
+        //   delay: 2000,
+        // },
+        // {
+        //   targets: this.sadFace,
+        //   duration: 500,
+        //   alpha: 0,
+        // },
+        // {
+        //   targets: this.eclipseSad,
+        //   duration: 500,
+        //   alpha: 0,
+        // },
+        // {
+        //   targets: this.heroText3,
+        //   duration: 1000,
+        //   alpha: 1,
+        //   delay: 2000,
+        // },
+        // {
+        //   targets: this.eclipseAngry,
+        //   duration: 500,
+        //   alpha: 1,
+        // },
+        // {
+        //   targets: this.angryFace,
+        //   duration: 500,
+        //   alpha: 1,
+        // },
+        // {
+        //   targets: this.eclipseAngry,
+        //   duration: 500,
+        //   alpha: 0,
+        //   delay: 1000,
+        // },
+        // {
+        //   targets: this.heroText3,
+        //   duration: 1000,
+        //   alpha: 0,
+        // },
+        // {
+        //   targets: this.angryFace,
+        //   duration: 500,
+        //   alpha: 0,
+        // },
+        // {
+        //   targets: this.heroName,
+        //   duration: 500,
+        //   alpha: 0,
+        // },
+        // {
+        //   targets: container,
+        //   duration: 100,
+        //   alpha: 0,
+        // },
+
         {
           targets: this.textContainer1,
           duration: 1000,
@@ -537,7 +574,7 @@ export class Dialogue extends Scene {
           delay: 500,
         },
         {
-          targets: this.speechLeft,
+          targets: this.thoughtLeft,
           duration: 500,
           alpha: 1,
           delay: 100,
@@ -560,6 +597,50 @@ export class Dialogue extends Scene {
         },
         {
           targets: this.heroText5,
+          duration: 1000,
+          alpha: 1,
+          delay: 2000,
+        },
+        {
+          targets: this.heroText5,
+          duration: 1000,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.heroText6,
+          duration: 1000,
+          alpha: 1,
+          delay: 2000,
+        },
+        {
+          targets: this.eclipseSad,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.sadFace,
+          duration: 500,
+          alpha: 1,
+        },
+        {
+          targets: this.heroText6,
+          duration: 500,
+          alpha: 0,
+          delay: 2000,
+        },
+        {
+          targets: this.eclipseSad,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.sadFace,
+          duration: 500,
+          alpha: 0,
+        },
+        {
+          targets: this.heroText7,
           duration: 1000,
           alpha: 1,
           delay: 2000,

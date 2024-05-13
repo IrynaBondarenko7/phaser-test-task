@@ -120,17 +120,19 @@ export class ChooseClothes extends Scene {
 
     let form = this.add.image(0, 0, "form");
 
-    let text = this.add.text(-110, -15, "Choose your clothes", {
-      fontFamily: "Nunito Sans",
-      fontWeight: 700,
-      fontSize: 25,
-      color: "#141A3D",
-      align: "center",
-      padding: {
-        top: 10,
-        bottom: 10,
-      },
-    });
+    let text = this.add
+      .text(-110, -15, "Choose your clothes", {
+        fontFamily: "Nunito Sans",
+        fontWeight: 700,
+        fontSize: 25,
+        color: "#141A3D",
+        align: "center",
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+      })
+      .setAlpha(0);
 
     this.numberOfChoiseText = this.add.text(
       -35,
@@ -194,6 +196,13 @@ export class ChooseClothes extends Scene {
         };
         localStorage.setItem("characterData", JSON.stringify(character));
       }
+    });
+
+    this.tweens.add({
+      targets: text,
+      duration: 1000,
+      delay: 500,
+      alpha: 1,
     });
   }
 

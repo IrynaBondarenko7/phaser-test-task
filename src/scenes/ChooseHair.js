@@ -100,17 +100,19 @@ export class ChooseHair extends Scene {
 
     let form = this.add.image(0, 0, "form");
 
-    let text = this.add.text(-80, -15, "Choose your hair", {
-      fontFamily: "Nunito Sans",
-      fontWeight: 700,
-      fontSize: 25,
-      color: "#141A3D",
-      align: "center",
-      padding: {
-        top: 10,
-        bottom: 10,
-      },
-    });
+    let text = this.add
+      .text(-80, -15, "Choose your hair", {
+        fontFamily: "Nunito Sans",
+        fontWeight: 700,
+        fontSize: 25,
+        color: "#141A3D",
+        align: "center",
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+      })
+      .setAlpha(0);
 
     this.numberOfChoiseText = this.add.text(
       -35,
@@ -175,6 +177,13 @@ export class ChooseHair extends Scene {
         };
         localStorage.setItem("characterData", JSON.stringify(character));
       }
+    });
+
+    this.tweens.add({
+      targets: text,
+      duration: 1000,
+      delay: 500,
+      alpha: 1,
     });
   }
 
