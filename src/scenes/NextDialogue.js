@@ -55,12 +55,12 @@ export class NextDialogue extends Scene {
     this.home = this.add.image(50, 50, "home").setInteractive().setScale(1.4);
 
     this.middleDialogue = this.add
-      .image(512, 434, "middle-dialogue")
+      .image(352, 434, "middle-dialogue")
       .setInteractive()
       .setScale(1.1);
 
     this.text1 = this.add
-      .text(350, 380, `${data[16].text}`, {
+      .text(200, 380, `${data[16].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -78,7 +78,7 @@ export class NextDialogue extends Scene {
       .setAlpha(0);
 
     this.text2 = this.add
-      .text(350, 380, `${data[17].text}`, {
+      .text(190, 380, `${data[17].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -96,7 +96,7 @@ export class NextDialogue extends Scene {
       .setAlpha(0);
 
     this.text3 = this.add
-      .text(350, 380, `${data[20].text}`, {
+      .text(190, 380, `${data[20].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -124,30 +124,30 @@ export class NextDialogue extends Scene {
 
     //First Layer
     this.eclipse = this.add
-      .image(490, 437, "eclipse-default")
+      .image(330, 437, "eclipse-default")
       .setScale(0.4)
       .setDepth(1);
 
     this.eclipseSad = this.add
-      .image(490, 437, "eclipse-sad")
+      .image(330, 437, "eclipse-sad")
       .setScale(0.4)
       .setDepth(1)
       .setAlpha(0);
 
     this.eclipseAngry = this.add
-      .image(490, 437, "eclipse-angry")
+      .image(330, 437, "eclipse-angry")
       .setScale(0.4)
       .setDepth(1)
       .setAlpha(0);
 
     this.eclipseShy = this.add
-      .image(490, 437, "eclipse-shy")
+      .image(330, 437, "eclipse-shy")
       .setScale(0.4)
       .setDepth(1)
       .setAlpha(0);
 
     this.eclipseSurprised = this.add
-      .image(490, 437, "eclipse-surprised")
+      .image(330, 437, "eclipse-surprised")
       .setScale(0.4)
       .setDepth(1)
       .setAlpha(0);
@@ -155,14 +155,14 @@ export class NextDialogue extends Scene {
     //Second Layer
     if (characterData.hair === 1) {
       this.hairBack = this.add
-        .image(512, 534, this.allBackHairs[0])
+        .image(352, 534, this.allBackHairs[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(2);
     }
     if (characterData.hair === 2) {
       this.hairBack = this.add
-        .image(512, 534, this.allBackHairs[1])
+        .image(352, 534, this.allBackHairs[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(2);
@@ -171,33 +171,33 @@ export class NextDialogue extends Scene {
     //Third Layer:
     if (characterData.body === 1) {
       this.body = this.add
-        .image(512, 534, this.allBodies[0])
+        .image(352, 534, this.allBodies[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(3);
 
       let mask = this.make
         .graphics()
-        .fillEllipse(512, 344, this.body.width * 0.3, this.body.height * 0.25);
+        .fillEllipse(352, 344, this.body.width * 0.3, this.body.height * 0.25);
       this.body.setMask(mask.createGeometryMask());
     }
     if (characterData.body === 2) {
       this.body = this.add
-        .image(512, 534, this.allBodies[1])
+        .image(352, 534, this.allBodies[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(3);
 
       let mask = this.make
         .graphics()
-        .fillEllipse(512, 344, this.body.width * 0.3, this.body.height * 0.25);
+        .fillEllipse(352, 344, this.body.width * 0.3, this.body.height * 0.25);
       this.body.setMask(mask.createGeometryMask());
     }
 
     // Fourth Layer
     if (characterData.cloths === 1) {
       this.cloths = this.add
-        .image(512, 534, this.allClothes[0])
+        .image(352, 534, this.allClothes[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(4);
@@ -205,7 +205,7 @@ export class NextDialogue extends Scene {
       let mask = this.make
         .graphics()
         .fillEllipse(
-          512,
+          352,
           344,
           this.cloths.width * 0.4,
           this.cloths.height * 0.25
@@ -215,7 +215,7 @@ export class NextDialogue extends Scene {
 
     if (characterData.cloths === 2) {
       this.cloths = this.add
-        .image(512, 534, this.allClothes[1])
+        .image(352, 534, this.allClothes[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(4);
@@ -223,7 +223,25 @@ export class NextDialogue extends Scene {
       let mask = this.make
         .graphics()
         .fillEllipse(
-          512,
+          352,
+          344,
+          this.cloths.width * 0.4,
+          this.cloths.height * 0.25
+        );
+      this.cloths.setMask(mask.createGeometryMask());
+    }
+
+    if (characterData.cloths === 3) {
+      this.cloths = this.add
+        .image(352, 534, this.allClothes[2])
+        .setScale(0.5)
+        .setInteractive()
+        .setDepth(4);
+
+      let mask = this.make
+        .graphics()
+        .fillEllipse(
+          352,
           344,
           this.cloths.width * 0.4,
           this.cloths.height * 0.25
@@ -234,13 +252,13 @@ export class NextDialogue extends Scene {
     //Fifth Layer
     if (characterData.body === 1) {
       this.face = this.add
-        .image(512, 534, this.allFaces[0])
+        .image(352, 534, this.allFaces[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(5);
 
       this.surprisedFace = this.add
-        .image(512, 534, this.allSurprisedFaces[0])
+        .image(352, 534, this.allSurprisedFaces[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
@@ -249,13 +267,13 @@ export class NextDialogue extends Scene {
 
     if (characterData.body === 2) {
       this.face = this.add
-        .image(512, 534, this.allFaces[1])
+        .image(352, 534, this.allFaces[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(5);
 
       this.surprisedFace = this.add
-        .image(512, 534, this.allSurprisedFaces[1])
+        .image(352, 534, this.allSurprisedFaces[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
@@ -265,24 +283,24 @@ export class NextDialogue extends Scene {
 
     if (characterData.hair === 1) {
       this.hairFront = this.add
-        .image(512, 534, this.allFrontHairs[0])
+        .image(352, 534, this.allFrontHairs[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(7);
     }
     if (characterData.hair === 2) {
       this.hairFront = this.add
-        .image(512, 534, this.allFrontHairs[1])
+        .image(352, 534, this.allFrontHairs[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(7);
     }
 
-    this.thoughtLeft = this.add.image(525, 567, "thought-left").setDepth(1);
+    this.thoughtLeft = this.add.image(365, 567, "thought-left").setDepth(1);
     this.thoughtLeft.setAlpha(0);
 
     this.heroName = this.add
-      .text(540, 510, "SAMPLE", {
+      .text(380, 510, "SAMPLE", {
         fontFamily: "Passion One",
         fontWeight: 700,
         fontSize: 20,
@@ -299,7 +317,7 @@ export class NextDialogue extends Scene {
     this.heroName.setAlpha(0);
 
     this.heroText1 = this.add
-      .text(400, 535, `${data[18].text}`, {
+      .text(240, 535, `${data[18].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -344,20 +362,20 @@ export class NextDialogue extends Scene {
 
     //First Layer
     this.eclipseRussell = this.add
-      .image(535, 435, "eclipse-default")
+      .image(375, 435, "eclipse-default")
       .setScale(0.4)
       .setDepth(1);
 
     //Second Layer
     this.hairBackRussell = this.add
-      .image(542, 534, "hair-back-russell")
+      .image(382, 534, "hair-back-russell")
       .setScale(0.5)
       .setInteractive()
       .setDepth(2);
 
     //Third Layer:
     this.bodyRussell = this.add
-      .image(542, 534, "russell-body")
+      .image(382, 534, "russell-body")
       .setScale(0.5)
       .setInteractive()
       .setDepth(3);
@@ -365,7 +383,7 @@ export class NextDialogue extends Scene {
     let maskRussell = this.make
       .graphics()
       .fillEllipse(
-        500,
+        340,
         344,
         this.bodyRussell.width * 0.4,
         this.bodyRussell.height * 0.25
@@ -374,7 +392,7 @@ export class NextDialogue extends Scene {
 
     // Fourth Layer
     this.clothsRussell = this.add
-      .image(542, 534, "russell-cloths")
+      .image(382, 534, "russell-cloths")
       .setScale(0.5)
       .setInteractive()
       .setDepth(4);
@@ -382,7 +400,7 @@ export class NextDialogue extends Scene {
     let maskClothsRussell = this.make
       .graphics()
       .fillEllipse(
-        500,
+        340,
         344,
         this.clothsRussell.width * 0.4,
         this.clothsRussell.height * 0.25
@@ -391,23 +409,23 @@ export class NextDialogue extends Scene {
 
     //Fifth Layer
     this.faceRussell = this.add
-      .image(542, 534, "russell-face")
+      .image(382, 534, "russell-face")
       .setScale(0.5)
       .setInteractive()
       .setDepth(5);
 
     //Sixth Layer
     this.hairFrontRussell = this.add
-      .image(542, 534, "hair-front-russell")
+      .image(382, 534, "hair-front-russell")
       .setScale(0.5)
       .setInteractive()
       .setDepth(7);
 
-    this.speechLeft = this.add.image(510, 537, "speech-left").setDepth(1);
+    this.speechLeft = this.add.image(350, 537, "speech-left").setDepth(1);
     //  this.thoughtLeft.setAlpha(0);
 
     this.russellName = this.add
-      .text(415, 468, "RUSSELL", {
+      .text(255, 468, "RUSSELL", {
         fontFamily: "Passion One",
         fontWeight: 700,
         fontSize: 20,
@@ -422,7 +440,7 @@ export class NextDialogue extends Scene {
       .setDepth(2);
 
     this.russellText1 = this.add
-      .text(390, 490, `${data[19].text}`, {
+      .text(230, 490, `${data[19].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -439,7 +457,7 @@ export class NextDialogue extends Scene {
       .setDepth(2);
 
     this.russellText2 = this.add
-      .text(390, 500, `${data[21].text}`, {
+      .text(230, 500, `${data[21].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -461,7 +479,7 @@ export class NextDialogue extends Scene {
     this.russellName.setAlpha(0);
 
     let endText = this.add
-      .text(512, 360, "The End", {
+      .text(352, 360, "The End", {
         fontFamily: "Arial Black",
         fontSize: 50,
         color: "#D34578",
@@ -504,7 +522,7 @@ export class NextDialogue extends Scene {
           targets: this.text1,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.text2,
@@ -517,7 +535,7 @@ export class NextDialogue extends Scene {
           x: 100,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.text2,
@@ -607,7 +625,7 @@ export class NextDialogue extends Scene {
           targets: this.russellText1,
           duration: 500,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.russellName,
@@ -670,7 +688,7 @@ export class NextDialogue extends Scene {
           targets: this.russellText2,
           duration: 500,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.russellName,

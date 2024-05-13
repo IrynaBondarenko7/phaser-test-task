@@ -38,13 +38,13 @@ export class ChooseClothes extends Scene {
 
     if (characterData.hair === 1) {
       this.hairBack = this.add
-        .image(512, 434, this.allBackHairs[0])
+        .image(352, 434, this.allBackHairs[0])
         .setScale(0.5)
         .setInteractive();
     }
     if (characterData.hair === 2) {
       this.hairBack = this.add
-        .image(512, 434, this.allBackHairs[1])
+        .image(352, 434, this.allBackHairs[1])
         .setScale(0.5)
         .setInteractive();
     }
@@ -52,33 +52,33 @@ export class ChooseClothes extends Scene {
     //Third Layer:
     if (characterData.body === 1) {
       this.body = this.add
-        .image(512, 434, this.allBodies[0])
+        .image(352, 434, this.allBodies[0])
         .setScale(0.5)
         .setInteractive();
     }
     if (characterData.body === 2) {
       this.body = this.add
-        .image(512, 434, this.allBodies[1])
+        .image(352, 434, this.allBodies[1])
         .setScale(0.5)
         .setInteractive();
     }
 
     // Fourth Layer
     this.cloths = this.add
-      .image(512, 434, this.allClothes[this.index])
+      .image(352, 434, this.allClothes[this.index])
       .setScale(0.5)
       .setInteractive();
 
     //Fifth Layer
     if (characterData.body === 1) {
       this.face = this.add
-        .image(512, 434, this.allFaces[0])
+        .image(352, 434, this.allFaces[0])
         .setScale(0.5)
         .setInteractive();
     }
     if (characterData.body === 2) {
       this.face = this.add
-        .image(512, 434, this.allFaces[1])
+        .image(352, 434, this.allFaces[1])
         .setScale(0.5)
         .setInteractive();
     }
@@ -86,13 +86,13 @@ export class ChooseClothes extends Scene {
 
     if (characterData.hair === 1) {
       this.hairFront = this.add
-        .image(512, 434, this.allFrontHairs[0])
+        .image(352, 434, this.allFrontHairs[0])
         .setScale(0.5)
         .setInteractive();
     }
     if (characterData.hair === 2) {
       this.hairFront = this.add
-        .image(512, 434, this.allFrontHairs[1])
+        .image(352, 434, this.allFrontHairs[1])
         .setScale(0.5)
         .setInteractive();
     }
@@ -100,7 +100,7 @@ export class ChooseClothes extends Scene {
     //points
     this.allPoints = [];
 
-    let startX = 512;
+    let startX = 352;
     const distance = 20;
 
     this.allClothes.forEach((cloths, index) => {
@@ -109,8 +109,8 @@ export class ChooseClothes extends Scene {
       this.allPoints.push(this.add.image(x, y, "point"));
     });
 
-    let backButton = this.add.image(300, 500, "btn-left").setInteractive();
-    let forwardButton = this.add.image(700, 500, "btn-right").setInteractive();
+    let backButton = this.add.image(140, 500, "btn-left").setInteractive();
+    let forwardButton = this.add.image(540, 500, "btn-right").setInteractive();
 
     backButton.on("pointerdown", () => {
       this.previousCloths();
@@ -121,7 +121,7 @@ export class ChooseClothes extends Scene {
     });
 
     //Form container
-    let container = this.add.container(512, 634);
+    let container = this.add.container(352, 634);
 
     let form = this.add.image(0, 0, "form");
 
@@ -162,7 +162,7 @@ export class ChooseClothes extends Scene {
 
     let confirmBtn = this.add.image(0, 0, "confirm-btn");
 
-    this.confirmContainer = this.add.container(512, 720);
+    this.confirmContainer = this.add.container(352, 720);
 
     let confirmText = this.add.text(-70, -25, "Confirm and start", {
       fontFamily: "Nunito Sans",
@@ -212,7 +212,7 @@ export class ChooseClothes extends Scene {
 
     this.tweens.add({
       targets: text,
-      duration: 1000,
+      duration: 500,
       delay: 400,
       alpha: 1,
     });
@@ -243,7 +243,7 @@ export class ChooseClothes extends Scene {
   }
 
   previousCloths() {
-    this.index = this.index <= 0 ? 1 : this.index - 1;
+    this.index = this.index <= 0 ? 2 : this.index - 1;
 
     this.cloths.setTexture(this.allClothes[this.index]);
 

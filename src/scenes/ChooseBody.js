@@ -54,26 +54,26 @@ export class ChooseBody extends Scene {
     this.add.image(512, 384, "background-bedroom").setScale(0.5);
 
     //Second Layer
-    this.add.image(512, 434, "hair-back1").setScale(0.5);
+    this.add.image(352, 434, "hair-back1").setScale(0.5);
     //Third Layer:
     this.body = this.add
-      .image(512, 434, this.allBodies[this.index])
+      .image(352, 434, this.allBodies[this.index])
       .setScale(0.5)
       .setInteractive();
     // Fourth Layer
-    this.add.image(512, 434, "clothes-orange").setScale(0.5);
+    this.add.image(352, 434, "clothes-orange").setScale(0.5);
     //Fifth Layer
     this.face = this.add
-      .image(512, 434, this.allFaces[this.index])
+      .image(352, 434, this.allFaces[this.index])
       .setScale(0.5)
       .setInteractive();
     //Sixth Layer
-    this.add.image(512, 434, "hair-front1").setScale(0.5);
+    this.add.image(352, 434, "hair-front1").setScale(0.5);
 
     //points
     this.allPoints = [];
 
-    let startX = 512;
+    let startX = 352;
     const distance = 20;
 
     this.allBodies.forEach((body, index) => {
@@ -82,8 +82,8 @@ export class ChooseBody extends Scene {
       this.allPoints.push(this.add.image(x, y, "point"));
     });
 
-    let backButton = this.add.image(300, 500, "btn-left").setInteractive();
-    let forwardButton = this.add.image(700, 500, "btn-right").setInteractive();
+    let backButton = this.add.image(140, 500, "btn-left").setInteractive();
+    let forwardButton = this.add.image(540, 500, "btn-right").setInteractive();
 
     backButton.on("pointerdown", () => {
       this.previousBody();
@@ -94,7 +94,7 @@ export class ChooseBody extends Scene {
     });
 
     //Form container
-    let container = this.add.container(512, 634);
+    let container = this.add.container(352, 634);
 
     let form = this.add.image(0, 0, "form");
 
@@ -133,7 +133,7 @@ export class ChooseBody extends Scene {
 
     let confirmBtn = this.add.image(0, 0, "confirm-btn");
 
-    this.confirmContainer = this.add.container(512, 720);
+    this.confirmContainer = this.add.container(352, 720);
 
     let confirmText = this.add.text(-30, -25, "Confirm", {
       fontFamily: "Nunito Sans",

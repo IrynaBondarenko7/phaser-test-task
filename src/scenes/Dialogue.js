@@ -58,12 +58,12 @@ export class Dialogue extends Scene {
     this.home = this.add.image(50, 50, "home").setInteractive().setScale(1.4);
 
     this.middleDialogue = this.add
-      .image(512, 434, "middle-dialogue")
+      .image(352, 434, "middle-dialogue")
       .setInteractive()
       .setScale(1.1);
 
     this.text1 = this.add
-      .text(350, 380, `${data[1].text}`, {
+      .text(200, 380, `${data[1].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -81,7 +81,7 @@ export class Dialogue extends Scene {
       .setAlpha(0);
 
     this.text2 = this.add
-      .text(360, 380, `${data[5].text}`, {
+      .text(200, 380, `${data[5].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -99,7 +99,7 @@ export class Dialogue extends Scene {
       .setAlpha(0);
 
     this.text3 = this.add
-      .text(360, 380, `${data[10].text}`, {
+      .text(200, 390, `${data[10].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -117,7 +117,7 @@ export class Dialogue extends Scene {
       .setAlpha(0);
 
     this.text4 = this.add
-      .text(360, 380, `${data[12].text}`, {
+      .text(200, 390, `${data[12].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -146,24 +146,24 @@ export class Dialogue extends Scene {
 
     //First Layer
     this.eclipse = this.add
-      .image(490, 437, "eclipse-default")
+      .image(330, 437, "eclipse-default")
       .setScale(0.4)
       .setDepth(1);
 
     this.eclipseSad = this.add
-      .image(490, 437, "eclipse-sad")
+      .image(330, 437, "eclipse-sad")
       .setScale(0.4)
       .setDepth(1)
       .setAlpha(0);
 
     this.eclipseAngry = this.add
-      .image(490, 437, "eclipse-angry")
+      .image(330, 437, "eclipse-angry")
       .setScale(0.4)
       .setDepth(1)
       .setAlpha(0);
 
     this.eclipseShy = this.add
-      .image(490, 437, "eclipse-shy")
+      .image(330, 437, "eclipse-shy")
       .setScale(0.4)
       .setDepth(1)
       .setAlpha(0);
@@ -171,14 +171,14 @@ export class Dialogue extends Scene {
     //Second Layer
     if (characterData.hair === 1) {
       this.hairBack = this.add
-        .image(512, 534, this.allBackHairs[0])
+        .image(352, 534, this.allBackHairs[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(2);
     }
     if (characterData.hair === 2) {
       this.hairBack = this.add
-        .image(512, 534, this.allBackHairs[1])
+        .image(352, 534, this.allBackHairs[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(2);
@@ -187,33 +187,33 @@ export class Dialogue extends Scene {
     //Third Layer:
     if (characterData.body === 1) {
       this.body = this.add
-        .image(512, 534, this.allBodies[0])
+        .image(352, 534, this.allBodies[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(3);
 
       let mask = this.make
         .graphics()
-        .fillEllipse(512, 344, this.body.width * 0.3, this.body.height * 0.25);
+        .fillEllipse(352, 344, this.body.width * 0.3, this.body.height * 0.25);
       this.body.setMask(mask.createGeometryMask());
     }
     if (characterData.body === 2) {
       this.body = this.add
-        .image(512, 534, this.allBodies[1])
+        .image(352, 534, this.allBodies[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(3);
 
       let mask = this.make
         .graphics()
-        .fillEllipse(512, 344, this.body.width * 0.3, this.body.height * 0.25);
+        .fillEllipse(352, 344, this.body.width * 0.3, this.body.height * 0.25);
       this.body.setMask(mask.createGeometryMask());
     }
 
     // Fourth Layer
     if (characterData.cloths === 1) {
       this.cloths = this.add
-        .image(512, 534, this.allClothes[0])
+        .image(352, 534, this.allClothes[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(4);
@@ -221,7 +221,7 @@ export class Dialogue extends Scene {
       let mask = this.make
         .graphics()
         .fillEllipse(
-          512,
+          352,
           344,
           this.cloths.width * 0.4,
           this.cloths.height * 0.25
@@ -231,7 +231,7 @@ export class Dialogue extends Scene {
 
     if (characterData.cloths === 2) {
       this.cloths = this.add
-        .image(512, 534, this.allClothes[1])
+        .image(352, 534, this.allClothes[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(4);
@@ -239,7 +239,7 @@ export class Dialogue extends Scene {
       let mask = this.make
         .graphics()
         .fillEllipse(
-          512,
+          352,
           344,
           this.cloths.width * 0.4,
           this.cloths.height * 0.25
@@ -248,7 +248,7 @@ export class Dialogue extends Scene {
     }
     if (characterData.cloths === 3) {
       this.cloths = this.add
-        .image(512, 534, this.allClothes[2])
+        .image(352, 534, this.allClothes[2])
         .setScale(0.5)
         .setInteractive()
         .setDepth(4);
@@ -256,7 +256,7 @@ export class Dialogue extends Scene {
       let mask = this.make
         .graphics()
         .fillEllipse(
-          512,
+          352,
           344,
           this.cloths.width * 0.4,
           this.cloths.height * 0.25
@@ -267,27 +267,27 @@ export class Dialogue extends Scene {
     //Fifth Layer
     if (characterData.body === 1) {
       this.face = this.add
-        .image(512, 534, this.allFaces[0])
+        .image(352, 534, this.allFaces[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(5);
 
       this.sadFace = this.add
-        .image(512, 534, this.allSadFaces[0])
+        .image(352, 534, this.allSadFaces[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
         .setAlpha(0);
 
       this.angryFace = this.add
-        .image(512, 534, this.allAngryFaces[0])
+        .image(352, 534, this.allAngryFaces[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
         .setAlpha(0);
 
       this.shyFace = this.add
-        .image(512, 534, this.allShyFaces[0])
+        .image(352, 534, this.allShyFaces[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
@@ -296,27 +296,27 @@ export class Dialogue extends Scene {
 
     if (characterData.body === 2) {
       this.face = this.add
-        .image(512, 534, this.allFaces[1])
+        .image(352, 534, this.allFaces[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(5);
 
       this.sadFace = this.add
-        .image(512, 534, this.allSadFaces[1])
+        .image(352, 534, this.allSadFaces[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
         .setAlpha(0);
 
       this.angryFace = this.add
-        .image(512, 534, this.allAngryFaces[1])
+        .image(352, 534, this.allAngryFaces[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
         .setAlpha(0);
 
       this.shyFace = this.add
-        .image(512, 534, this.allShyFaces[1])
+        .image(352, 534, this.allShyFaces[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(6)
@@ -326,24 +326,24 @@ export class Dialogue extends Scene {
 
     if (characterData.hair === 1) {
       this.hairFront = this.add
-        .image(512, 534, this.allFrontHairs[0])
+        .image(352, 534, this.allFrontHairs[0])
         .setScale(0.5)
         .setInteractive()
         .setDepth(7);
     }
     if (characterData.hair === 2) {
       this.hairFront = this.add
-        .image(512, 534, this.allFrontHairs[1])
+        .image(352, 534, this.allFrontHairs[1])
         .setScale(0.5)
         .setInteractive()
         .setDepth(7);
     }
 
-    this.thoughtLeft = this.add.image(525, 567, "thought-left").setDepth(1);
+    this.thoughtLeft = this.add.image(365, 567, "thought-left").setDepth(1);
     this.thoughtLeft.setAlpha(0);
 
     this.heroName = this.add
-      .text(540, 510, "SAMPLE", {
+      .text(380, 510, "SAMPLE", {
         fontFamily: "Passion One",
         fontWeight: 700,
         fontSize: 20,
@@ -360,7 +360,7 @@ export class Dialogue extends Scene {
     this.heroName.setAlpha(0);
 
     this.heroText1 = this.add
-      .text(400, 530, `${data[2].text}`, {
+      .text(240, 530, `${data[2].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -377,7 +377,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText2 = this.add
-      .text(400, 530, `${data[3].text}`, {
+      .text(240, 530, `${data[3].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -394,7 +394,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText3 = this.add
-      .text(400, 530, `${data[4].text}`, {
+      .text(240, 530, `${data[4].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -411,7 +411,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText4 = this.add
-      .text(400, 530, `${data[6].text}`, {
+      .text(240, 530, `${data[6].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -428,7 +428,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText5 = this.add
-      .text(400, 530, `${data[7].text}`, {
+      .text(240, 530, `${data[7].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -445,7 +445,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText6 = this.add
-      .text(400, 530, `${data[8].text}`, {
+      .text(240, 540, `${data[8].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -462,7 +462,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText7 = this.add
-      .text(400, 530, `${data[9].text}`, {
+      .text(240, 530, `${data[9].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -479,7 +479,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText8 = this.add
-      .text(400, 530, `${data[11].text}`, {
+      .text(240, 530, `${data[11].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -496,7 +496,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText9 = this.add
-      .text(400, 530, `${data[13].text}`, {
+      .text(240, 540, `${data[13].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -513,7 +513,7 @@ export class Dialogue extends Scene {
       .setDepth(2);
 
     this.heroText10 = this.add
-      .text(400, 530, `${data[14].text}`, {
+      .text(240, 540, `${data[14].text}`, {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
         fontSize: 20,
@@ -578,7 +578,7 @@ export class Dialogue extends Scene {
           x: 100,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.text1,
@@ -611,13 +611,13 @@ export class Dialogue extends Scene {
           targets: this.heroText1,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroText2,
           duration: 1000,
           alpha: 1,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.eclipseSad,
@@ -649,7 +649,7 @@ export class Dialogue extends Scene {
           targets: this.heroText3,
           duration: 1000,
           alpha: 1,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.eclipseAngry,
@@ -704,7 +704,7 @@ export class Dialogue extends Scene {
           x: 100,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.text2,
@@ -737,25 +737,25 @@ export class Dialogue extends Scene {
           targets: this.heroText4,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroText5,
           duration: 1000,
           alpha: 1,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroText5,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroText6,
           duration: 1000,
           alpha: 1,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.eclipseSad,
@@ -771,7 +771,7 @@ export class Dialogue extends Scene {
           targets: this.heroText6,
           duration: 500,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.eclipseSad,
@@ -787,13 +787,13 @@ export class Dialogue extends Scene {
           targets: this.heroText7,
           duration: 1000,
           alpha: 1,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroText7,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroName,
@@ -822,7 +822,7 @@ export class Dialogue extends Scene {
           x: 100,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.text3,
@@ -855,7 +855,7 @@ export class Dialogue extends Scene {
           targets: this.heroText8,
           duration: 500,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroName,
@@ -889,7 +889,7 @@ export class Dialogue extends Scene {
           x: 100,
           duration: 1000,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.text4,
@@ -922,13 +922,13 @@ export class Dialogue extends Scene {
           targets: this.heroText9,
           duration: 500,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.heroText10,
           duration: 500,
           alpha: 1,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.eclipseShy,
@@ -944,7 +944,7 @@ export class Dialogue extends Scene {
           targets: this.shyFace,
           duration: 500,
           alpha: 0,
-          delay: 2000,
+          delay: 1000,
         },
         {
           targets: this.eclipseShy,
@@ -953,22 +953,22 @@ export class Dialogue extends Scene {
         },
         {
           targets: this.heroText10,
-          duration: 500,
+          duration: 400,
           alpha: 0,
         },
         {
           targets: this.heroName,
-          duration: 500,
+          duration: 400,
           alpha: 0,
         },
         {
           targets: this.thoughtLeft,
-          duration: 500,
+          duration: 400,
           alpha: 0,
         },
         {
           targets: container,
-          duration: 1000,
+          duration: 200,
           alpha: 0,
         },
       ],

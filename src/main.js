@@ -9,7 +9,7 @@ import { NextDialogue } from "./scenes/NextDialogue";
 
 const config = {
   type: Phaser.AUTO,
-  width: 1024,
+  width: 700,
   height: 768,
   parent: "game-container",
   backgroundColor: "#FBD4E5",

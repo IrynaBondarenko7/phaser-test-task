@@ -13,7 +13,7 @@ export class StartGame extends Scene {
     this.add.image(512, 384, "background-bedroom").setScale(0.5);
 
     this.add
-      .text(512, 360, "Click to start the game", {
+      .text(352, 360, "Click to start the game", {
         fontFamily: "Arial Black",
         fontSize: 50,
         color: "#D34578",
@@ -25,7 +25,7 @@ export class StartGame extends Scene {
 
     let confirmBtn = this.add.image(0, 0, "confirm-btn").setScale(1.5);
 
-    this.confirmContainer = this.add.container(512, 520);
+    this.confirmContainer = this.add.container(352, 520);
 
     let confirmText = this.add.text(-30, -35, "Start", {
       fontFamily: "Nunito Sans",
