@@ -142,7 +142,7 @@ export class ChooseClothes extends Scene {
     this.numberOfChoiseText = this.add.text(
       -35,
       -53,
-      `Choise 1/${this.allBodies.length}`,
+      `Choise 1/${this.allClothes.length}`,
       {
         fontFamily: "Nunito Sans",
         fontWeight: 700,

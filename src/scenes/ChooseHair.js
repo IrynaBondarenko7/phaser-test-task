@@ -117,7 +117,7 @@ export class ChooseHair extends Scene {
     this.numberOfChoiseText = this.add.text(
       -35,
       -53,
-      `Choise 1/${this.allBodies.length}`,
+      `Choise 1/${this.allFrontHairs.length}`,
       {
         fontFamily: "Nunito Sans",
         fontWeight: 700,
